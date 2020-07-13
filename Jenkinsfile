@@ -14,8 +14,9 @@ pipeline {
         stage('Conection') { 
             steps {
                 def ConnString = "server=${params.Host};user=${params.User};pass=${params.Pass};database=${params.Database}"
-                pwd
-                mssql-cli i-sql-query -o file-output.txt
+              
+               // pwd
+                //mssql-cli i-sql-query -o file-output.txt
                 //mssql-cli -S (192.168.223.128) -U sa -P Laboratorio1 -d Laboratorio1 -i sql-query.sql -o file-output.txt
                 
                 
