@@ -1,38 +1,26 @@
 pipeline {
-    agent { label 'master' }
-
+    agent any 
     stages {
-        stage('build') {
+        stage('Conection') { 
             steps {
-                echo "Hello World from Jenkinsfile!"
+                pwd
+               // mssql-cli -S  '192.168.223.128' -U administrador -P Laboratorio1 -d TutorialDB 
                 
+                mssql-cli -S 192.168.223.128 -U sa -P Laboratorio1 -d Laboratorio1 -i sql-query.sql -o file-output.txt
+                
+                
+                echo"welcome" 
             }
         }
-
-        
-
-        stage ('Executing sql file') {
+        stage('Execution -Package') { 
             steps {
-                
-                    dir('sql-files'){
-                        sh '''export PATH=/bin/bash:$PATH
-                    	      cat sql-query.sql
-                    	      pwd
-                              cd 
-                              cd /usr/bin
-                              pwd
-                              ls
-                              whoami
-                              which mssql-cli
-                              
-                              
-                    	
-                              mssql-cli -S laboratorio-tcm.database.windows.net -U administrador -P Laboratorio1 -d TutorialDB -i sql-query.sql -o file-output.txt
-                        '''
-                	}
-            	
-        	}
+               echo"Ejecucion SQL" 
+            }
         }
-
+        stage('Execution -Deploy') { 
+            steps {
+                echo "Ejecucion satisfactoria" 
+            }
+        }
     }
 }
