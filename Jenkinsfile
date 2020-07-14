@@ -4,17 +4,10 @@ pipeline {
         stage('Execution-SQL_server') { 
             steps {
                
-           // sh sqlcmd -S 192.168.223.128 -U sa -P Laboratorio1 -d Laboratorio -i sql-query.sql -o file-output.txt
-             
-                //mssql-cli -S (192.168.223.128) -U sa -P Laboratorio1 -d Laboratorio1 -i sql-query.sql -o file-output.txt
-            dir('sql-files'){
-                        sh '''export PATH=/bin/bash:$PATH
-                    	      cat sql-query.sql
-                              
-                              sqlcmd -S 192.168.223.128 -U sa -P Laboratorio1 -d Laboratorio -i sql-query.sql -o file-output.txt
-                        '''    
+             //sh label: '', script: 'sqlcmd -S 192.168.223.128 -U sa -P Laboratorio1 -d Laboratorio -d Laboratorio -i sql-query.sql -o file-output.txt'
+             sh label: '', script: 'sqlcmd -S 192.168.223.128 -U sa -P Laboratorio1 -d Laboratorio '
+             sh label: '', script: '''INSERT INTO dbo.test ([Codigo],[Nombre]) VALUES ( 2, N\'FabioGil\') GO'''          
               }
             }
         }
     }
-}
