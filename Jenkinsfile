@@ -1,7 +1,7 @@
 pipeline {
     agent any 
     stages {
-        stage('Conection') { 
+        stage('Execution-SQL_server') { 
             steps {
                
            // sh sqlcmd -S 192.168.223.128 -U sa -P Laboratorio1 -d Laboratorio -i sql-query.sql -o file-output.txt
@@ -12,19 +12,7 @@ pipeline {
                     	      cat sql-query.sql
                               mssql-cli -S 192.168.223.128 -U sa -P Laboratorio1 -d Laboratorio -i sql-query.sql -o file-output.txt
                         '''    
-                
-                echo"welcome" 
-            }
-            }
-        }
-        stage('Execution -Package') { 
-            steps {
-               echo"Ejecucion SQL" 
-            }
-        }
-        stage('Execution -Deploy') { 
-            steps {
-                echo "Ejecucion satisfactoria" 
+              }
             }
         }
     }
