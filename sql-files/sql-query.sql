@@ -1,5 +1,5 @@
-INSERT INTO dbo.Customers
-   ([CustomerId],[Name],[Location],[Email])
+INSERT INTO dbo.test
+   ([Codigo],[Nombre])
 VALUES
-   ( 10, N'New 5 folder', N'United 5 folder', N'new5@works5.com')
+   ( 1, N'FabioGil')
 GO
